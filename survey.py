@@ -1,0 +1,1 @@
+#https://app.birdeye.com/JYSK-172133591523666/survey?surveyId=57190&businessId=172133591523666&source=preview
