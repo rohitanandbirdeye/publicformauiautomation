@@ -6,6 +6,8 @@ import asyncio
 from dotenv import load_dotenv
 load_dotenv()
 
+#https://app.birdeye.com/JYSK-172133591523666/survey?surveyId=57413&businessId=172133591523666&source=preview
+
 surveyUrl = "https://app.birdeye.com/JYSK-174369104409479/survey?surveyId=57123&businessId=174369104409479&source=preview"
 
 completeSurveyPrompt = """
@@ -37,9 +39,11 @@ The goal is to automate the process of filling out the survey form.
     - Features that were most useful
     - Aspects that made the experience enjoyable
 
-4. For open-ended questions, write thoughtful responses:
+4. For single-choice radio type questions, select any radio options.
 
-5. Demographic questions (if asked):
+5. For open-ended questions, write thoughtful responses:
+
+6. Demographic questions (if asked):
    - Fill in basic information without sharing unnecessarily sensitive details
    - Skip optional demographic questions unless specifically instructed to complete them
 
@@ -47,7 +51,7 @@ Complete the survey honestly but constructively, providing feedback that would b
 Important:
         - Reindex elements after each question is answered - since page and DOM will change
         - Wait for each element to load before interacting - especially the rating buttons (0-10)
-        - Use the correct locators for each element - especially the rating buttons (0-10)
+        - Use the correct locators for each element - especially the rating and radio buttons (0-10)
         - Ensure efficiency and accuracy throughout the process
         - If any element is not found, log the error and continue with the next element
         - In case the survey contains any other type of question, please answer them by recognizing the context of the survey

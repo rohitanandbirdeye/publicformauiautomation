@@ -5,6 +5,8 @@ import asyncio
 from dotenv import load_dotenv
 load_dotenv()
 
+#https://birdeye.com/boqueron-172133591523666/review-us?rtype=review_request&rid=23931483625&nr=1&source=email&templateId=1118678&custId=lVN3EwoZ0gZfuWirOmVTCg%3D%3D&enc=1
+
 task = """
    ### Prompt for Review us contact us directly automation
 
