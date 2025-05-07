@@ -6,48 +6,31 @@ from dotenv import load_dotenv
 load_dotenv()
 
 task = """
-   ### Prompt for checkin automation
+   ### Navigate to checkin page and fill the form
 
-**Objective:**
-Visit [checkin](https://birdeye.com/dumpling-baby-china-bistro-165406729056862/checkin/), fill the form and see results.
+    Here are the specific steps:
+    1. go to url https://birdeye.com/dumpling-baby-china-bistro-165406729056862/checkin
+    2. click on the **submit** button
+    3. Form should not be submitted.
+    4. Fill the form with the following details:
+        - Name: **AI testing**
+        - Email: *
+    5. Click on the **submit** button
+    6. Form should not be submitted.
+    7. Fill the form with the following details:
+        - Name: **AI testing**
+        - Email: *aitest@test.com*
+    8. Click on the **submit** button
+    9. Form should be submitted.
+    10. Verify the form submission by checking for a success message or confirmation.
+    11. If the form submission is successful, print "Form submitted successfully."
+    12. If the form submission fails, print "Form submission failed."
 
-**Important:**
-- Make sure that you click **submit** button.
----
-
-### Step 1: Navigate to the Website
-- Open [checkin](https://birdeye.com/dumpling-baby-china-bistro-165406729056862/checkin/).
-
----
-
-### Step 2: Click on "submit" Button
-- Locate the **submit** button on the page.
-- Click on the **submit** button.
-- Form should not be submitted.
----
-
-### Step 2: Fill the form with invalid data then click on "submit" Button
-- Fill the form with the following details:
-  - Keep Name field empty.
-  - Email: *aitest@*
-  - Phone: *1234567890*
-- Click on the **submit** button.
-- Form should not be submitted.
----
-
-### Step 3: Fill the form and then click on "submit" Button
-- Fill the form with the following details:
-  - Name: **AI testing**
-  - Email: *aitest@test.com*
-- Click on the **submit** button.
-- Form should be submitted.
----
-
-Important:
-        - Wait for each element to load before interacting
-        - Use the correct locators for each element
-        - Verify the submit button is clickable before clicking
-        - Ensure efficiency and accuracy throughout the process
+    Important:
+      - Wait for each element to load before interacting
+      - Use the correct locators for each element
+      - Verify the submit button is clickable before clicking
+      - Ensure efficiency and accuracy throughout the process
 """
 
 async def main():
