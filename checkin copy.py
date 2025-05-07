@@ -34,7 +34,6 @@ task = """
 """
 
 async def main():
-    os.environ["GOOGLE_API_KEY"]="AIzaSyAFw8PMvF8Ot16Ek7MmyIwvriLDrBpbjA0"
     agent = Agent(
         task=task,
         llm = ChatGoogleGenerativeAI(
@@ -43,6 +42,7 @@ async def main():
             max_tokens=None,
             timeout=None,
             max_retries=2,
+            gemini_api_key=os.getenv("GOOGLE_API_KEY")
         )
     )
     await agent.run()

@@ -58,7 +58,6 @@ After executing and submitting the survey, log your feedback on the user experie
 
 #We can reuse this function with different prompts for example: check if validation is working if a mandatory question is skipped 
 async def runAutomation(prompt):
-    os.environ["GOOGLE_API_KEY"]="AIzaSyAFw8PMvF8Ot16Ek7MmyIwvriLDrBpbjA0"
     agent = Agent(
         task=prompt,
         llm = ChatGoogleGenerativeAI(
@@ -67,6 +66,7 @@ async def runAutomation(prompt):
             max_tokens=None,
             timeout=None,
             max_retries=2,
+            gemini_api_key=os.getenv("GOOGLE_API_KEY")
         )
     )
     await agent.run()
