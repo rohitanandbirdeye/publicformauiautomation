@@ -33,22 +33,8 @@ Visit [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-1654067
 - Open [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-165406729056862/review-us?dashboard=1).
 
 ### Step 4: Click on "Review us on Google" Button
-- If the browser gets redirected then close the broswer window
+- If the browser gets redirected
 
----
-
-### Step 5: Navigate to the Website 
-- Open [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-165406729056862/review-us?dashboard=1&write=1).
-
----
-
-### Step 6: Select the star rating
-- Click the Next button once star rating is given
-- A new form should appear.
-- Fill up the form based on the star rating selected with random experience, name and dummy email address, check mark the check box that says i would like to be contacted.
-- Submit the form.
-
----
 
 
 **Important:** Ensure efficiency and accuracy throughout the process."""
