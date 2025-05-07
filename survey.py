@@ -6,19 +6,6 @@ import asyncio
 from dotenv import load_dotenv
 load_dotenv()
 
-# After answering the first question, click on th "previous" button to go back, check if the right answer/option exists and then click on the "Next" button to proceed.
-
-# - Rate the experience as follows:
-#      - 1-2: Very Poor
-#      - 3-4: Poor
-#      - 5-6: Average
-#      - 7-8: Good
-#      - 9-10: Excellent
-#    - Select the highest rating (e.g., 5 or 10) for the best experience 
-#     - Select the lowest rating (e.g., 1 or 2) for the worst experience
-#     - Select the middle rating (e.g., 3, 4, 5) for an average experience
-#     - Select rating based on the numbers visible on the screen
-
 surveyUrl = "https://app.birdeye.com/JYSK-174369104409479/survey?surveyId=57123&businessId=174369104409479&source=preview"
 
 completeSurveyPrompt = """
@@ -69,6 +56,7 @@ Final Step:
 After executing and submitting the survey, log your feedback on the user experience. Log any errors or issues encountered during the process.
 """
 
+#We can reuse this function with different prompts for example: check if validation is working if a mandatory question is skipped 
 async def runAutomation(prompt):
     os.environ["GOOGLE_API_KEY"]="AIzaSyAFw8PMvF8Ot16Ek7MmyIwvriLDrBpbjA0"
     agent = Agent(
