@@ -107,17 +107,17 @@ Visit the Birdeye review form for Dumpling Baby China Bistro and submit a 1-star
 4. Click the **"Next"** button.
 5. Wait for the feedback form to appear.
 6. Fill out the form using:
-   - **Review:** "Service was very slow and food was cold."
-   - **Name:** "Jane Doe"
-   - **Email:** "janedoe123@example.com"
-   - Check the box: "I would like to be contacted."
-7. Click **"Submit"**.
-8. After submission:
+   - **Review:** "The service was extremely slow, and the food arrived cold and tasteless."
+   - **Name:** "Tushar Aggarwal"
+   - **Email:** "tushar.aggarwal@birdeye.com"
+7. Enable the submit button which is disabled 
+8. Click "Submit" button.
+9. Confirm the review was submitted and close the browser or exit.
+10. After submission:
    - **Do not click or interact with any link or modal related to Privacy Policy or Terms.**
    - **Do not accept any follow-up dialog or redirection.**
    - **If a popup/modal appears, dismiss or close it without interaction.**
    - **Do not click buttons like “Continue”, “Learn more”, or anything outside the success confirmation.**
-9. Confirm the review was submitted and close the browser or exit.
 """
 
 task2 = """
@@ -133,17 +133,17 @@ Visit the Birdeye review form for Dumpling Baby China Bistro and submit a 2-star
 4. Click the **"Next"** button.
 5. Wait for the feedback form to appear.
 6. Fill out the form using:
-   - **Review:** "Below average experience, not satisfied."
-   - **Name:** "Jane Doe"
-   - **Email:** "janedoe123@example.com"
-   - Check the box: "I would like to be contacted."
-7. Click **"Submit"**.
-8. After submission:
+   - **Review:** "Food was below expectations and the ambiance wasn't comfortable or clean."
+   - **Name:** "Tushar Aggarwal"
+   - **Email:** "tushar.aggarwal@birdeye.com"
+7. Enable the submit button which is disabled 
+8. Click "Submit" button.
+9. Confirm the review was submitted and close the browser or exit.
+10. After submission:
    - **Do not click or interact with any link or modal related to Privacy Policy or Terms.**
    - **Do not accept any follow-up dialog or redirection.**
    - **If a popup/modal appears, dismiss or close it without interaction.**
    - **Do not click buttons like “Continue”, “Learn more”, or anything outside the success confirmation.**
-9. Confirm the review was submitted and close the browser or exit.
 """
 
 task3 = """
@@ -159,17 +159,17 @@ Visit the Birdeye review form for Dumpling Baby China Bistro and submit a 3-star
 4. Click the **"Next"** button.
 5. Wait for the feedback form to appear.
 6. Fill out the form using:
-   - **Review:** "It was okay, but could be better."
-   - **Name:** "Jane Doe"
-   - **Email:** "janedoe123@example.com"
-   - Check the box: "I would like to be contacted."
-7. Click **"Submit"**.
-8. After submission:
+   - **Review:** "The experience was average. Some dishes were good, others were underwhelming."
+   - **Name:** "Tushar Aggarwal"
+   - **Email:** "tushar.aggarwal@birdeye.com"
+7. Enable the submit button which is disabled 
+8. Click "Submit" button.
+9. Confirm the review was submitted and close the browser or exit.
+10. After submission:
    - **Do not click or interact with any link or modal related to Privacy Policy or Terms.**
    - **Do not accept any follow-up dialog or redirection.**
    - **If a popup/modal appears, dismiss or close it without interaction.**
    - **Do not click buttons like “Continue”, “Learn more”, or anything outside the success confirmation.**
-9. Confirm the review was submitted and close the browser or exit.
 """
 
 task4 = """
@@ -185,17 +185,17 @@ Visit the Birdeye review form for Dumpling Baby China Bistro and submit a 4-star
 4. Click the **"Next"** button.
 5. Wait for the feedback form to appear.
 6. Fill out the form using:
-   - **Review:** "Good service and food, minor issues."
-   - **Name:** "Jane Doe"
-   - **Email:** "janedoe123@example.com"
-   - Check the box: "I would like to be contacted."
-7. Click **"Submit"**.
-8. After submission:
+   - **Review:** "Great experience overall, food was tasty and service was attentive but a bit slow."
+   - **Name:** "Tushar Aggarwal"
+   - **Email:** "tushar.aggarwal@birdeye.com"
+7. Enable the submit button which is disabled 
+8. Click "Submit" button.
+9. Confirm the review was submitted and close the browser or exit.
+10. After submission:
    - **Do not click or interact with any link or modal related to Privacy Policy or Terms.**
    - **Do not accept any follow-up dialog or redirection.**
    - **If a popup/modal appears, dismiss or close it without interaction.**
    - **Do not click buttons like “Continue”, “Learn more”, or anything outside the success confirmation.**
-9. Confirm the review was submitted and close the browser or exit.
 """
 
 task5 = """
@@ -211,17 +211,17 @@ Visit the Birdeye review form for Dumpling Baby China Bistro and submit a 5-star
 4. Click the **"Next"** button.
 5. Wait for the feedback form to appear.
 6. Fill out the form using:
-   - **Review:** "Excellent service and delicious food!"
-   - **Name:** "Jane Doe"
-   - **Email:** "janedoe123@example.com"
-   - Check the box: "I would like to be contacted."
-7. Click **"Submit"**.
-8. After submission:
+   - **Review:** "Absolutely loved it! The service was exceptional and the food was full of flavor."
+   - **Name:** "Tushar Aggarwal"
+   - **Email:** "tushar.aggarwal@birdeye.com"
+7. Enable the submit button which is disabled 
+8. Click "Submit" button.
+9. Confirm the review was submitted and close the browser or exit.
+10. After submission:
    - **Do not click or interact with any link or modal related to Privacy Policy or Terms.**
    - **Do not accept any follow-up dialog or redirection.**
    - **If a popup/modal appears, dismiss or close it without interaction.**
    - **Do not click buttons like “Continue”, “Learn more”, or anything outside the success confirmation.**
-9. Confirm the review was submitted and close the browser or exit.
 """
 
 def count_tokens(prompts: list[str]) -> int:
@@ -235,7 +235,7 @@ def count_tokens(prompts: list[str]) -> int:
 
 async def main():
     
-    tasks = [task1,task2,task3,task4,task5]
+    tasks = [task1]
     print(f"🔢 Token count for task: {count_tokens(tasks)}\n")
     for task in tasks:
         agent = Agent(
