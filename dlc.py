@@ -13,10 +13,10 @@ task = """
     2. click on the **submit** button
     3. Validation errors should be visible on page.
     4. The following errors should be visible:
-        - **Registration Id Number**: This field is required.
-        - **Registration Id Type**: This field is required.
-        - **Address line 1**: This field is required.
-        - **Legal Business Name**: This field is required.
+        - **Registration Id Number**: Enter a valid.
+        - **Registration Id Type**: Enter a valid.
+        - **Address line 1**: Enter a valid.
+        - **Legal Business Name**: Enter a valid.
     5. If errors are not visible on page, then the form is not working as expected. Throw error and exit.
     6. Form should not be submitted.
 
@@ -44,5 +44,6 @@ async def main():
     print('------------------------')
     print(history.final_result())
     print('------------------------')
+    return history
 
-asyncio.run(main())
+#asyncio.run(main())

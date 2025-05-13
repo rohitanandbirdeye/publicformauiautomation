@@ -12,6 +12,8 @@ python-dotenv = "*"
 langchain-ollama = "*"
 playwright = "*"
 langchain-openai = "*"
+fastapi = "*"
+uvicorn = "*"
 
 [dev-packages]
 
