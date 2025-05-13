@@ -49,7 +49,7 @@
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Automation Results</h1>
+    <h1 class="text-center" id="automationresults">Automation Results</h1>
     <div class="table-container">
       <table class="table table-bordered mt-4">
         <thead>
@@ -73,6 +73,7 @@
         url: "http://127.0.0.1:8000/getAutomationResult",
         method: "GET",
         success: function (response) {
+          $("#automationresults").html("Automation Results" + " : " + new Date(response.final_result.start * 1000).toLocaleTimeString() + " - " + new Date(response.final_result.end * 1000).toLocaleTimeString());
           // Extract the pages data from the response
           const pages = response.final_result.pages;
 
