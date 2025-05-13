@@ -11,58 +11,85 @@
     crossorigin="anonymous"
   >
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    h1 {
+      color: #343a40;
+      margin-bottom: 20px;
+    }
+    .table-container {
+      overflow-x: auto; /* Makes the table scrollable on smaller screens */
+    }
+    .table {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .table th {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+    .table tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .table tbody tr:hover {
+      background-color: #e9ecef;
+    }
+    .text-danger {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <div class="container mt-5">
     <h1 class="text-center">Automation Results</h1>
-    <table class="table table-bordered mt-4">
-      <thead class="table-dark">
-        <tr>
-          <th>Status</th>
-          <th>Message</th>
-        </tr>
-      </thead>
-      <tbody id="results-table">
-        <!-- Rows will be dynamically added here -->
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Success</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="results-table">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script>
     $(document).ready(function () {
       // Make an AJAX call to the FastAPI endpoint
       $.ajax({
-        url: "http://127.0.0.1:8000/testpublicformulrs",
+        url: "http://127.0.0.1:8000/getAutomationResult",
         method: "GET",
-        timeout: 50000,
         success: function (response) {
+          // Extract the pages data from the response
+          const pages = response.final_result.pages;
+
           // Populate the table with the response data
           const tableBody = $("#results-table");
           tableBody.empty(); // Clear existing rows
 
-          // Add rows for DLC results
-          tableBody.append(`
-            <tr>
-              <td>DLC Page Success</td>
-              <td>${response["DLC Page Success"]}</td>
-            </tr>
-            <tr>
-              <td>DLC Page Final Result</td>
-              <td>${response["DLC Page Final Result"]}</td>
-            </tr>
-          `);
-
-          // Add rows for Review Us results
-          tableBody.append(`
-            <tr>
-              <td>Review Us Page Success</td>
-              <td>${response["Review Us Page Success"]}</td>
-            </tr>
-            <tr>
-              <td>Review Us Page Final Result</td>
-              <td>${response["Review Us Page Final Result"]}</td>
-            </tr>
-          `);
+          // Iterate over the pages and add rows to the table
+          for (const [page, details] of Object.entries(pages)) {
+            tableBody.append(`
+              <tr>
+                <td>${page}</td>
+                <td>${details.success ? "✅" : "❌"}</td>
+                <td>${details.message}</td>
+              </tr>
+            `);
+          }
         },
         error: function (error) {
           console.error("Error fetching data:", error);
@@ -70,7 +97,7 @@
           tableBody.empty();
           tableBody.append(`
             <tr>
-              <td colspan="2" class="text-danger text-center">Failed to fetch data from the server.</td>
+              <td colspan="3" class="text-danger text-center">Failed to fetch data from the server.</td>
             </tr>
           `);
         },
