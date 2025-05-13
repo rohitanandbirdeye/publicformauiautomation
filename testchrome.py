@@ -15,14 +15,17 @@ task = """
     
 """
 
+#https://github.com/browser-use/browser-use/issues/1520
+
 browser = Browser(
     config=BrowserConfig(
         headless=False,
-        # Specify the path to your Chrome executable
         browser_binary_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',  # macOS path
-        # For Windows, typically: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-        # For Linux, typically: '/usr/bin/google-chrome',
-        #browser_binary_path='/Applications/Safari.app/Contents/MacOS/Safari',  # macOS path
+        extra_browser_args=[
+             "--user-data-dir=remote-debug-profile",
+            #"--user-data-dir=/Users/anand/Library/Application Support/Google/Chrome/Default",  # Path to Chrome user data
+            #"--profile-directory=Profile 1"  # Specify the profile directory (e.g., Default, Profile 1, etc.)
+        ]
     )
 )
 
