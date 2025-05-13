@@ -61,20 +61,20 @@ Visit [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-1654067
 async def main():
     agent = Agent(
         task=task,
-        # llm = ChatGoogleGenerativeAI(
-        #     model="gemini-1.5-flash",
-        #     temperature=0,
-        #     max_tokens=None,
-        #     timeout=None,
-        #     max_retries=2,
-        #     gemini_api_key=os.getenv("GOOGLE_API_KEY")
-        # )
-        llm = ChatOpenAI(
-            model="gpt-4o",
-            temperature=0.0,
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-1.5-flash",
+            temperature=0,
+            max_tokens=None,
+            timeout=None,
             max_retries=2,
-            timeout=30,
+            gemini_api_key=os.getenv("GOOGLE_API_KEY")
         )
+        # llm = ChatOpenAI(
+        #     model="gpt-4o",
+        #     temperature=0.0,
+        #     max_retries=2,
+        #     timeout=30,
+        # )
     )
     history = await agent.run()
     result = history.final_result()
