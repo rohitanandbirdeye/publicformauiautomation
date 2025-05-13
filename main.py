@@ -88,7 +88,7 @@ async def testpublicformulrs():
                 "success": dlc_history.is_successful(),
                 "message": dlc_history.final_result(),
             }, 
-            "Review us": {
+            "Review us rating": {
                 "success": reviewusrate_history.is_successful(),
                 "message": reviewusrate_history.final_result()
             },
