@@ -21,18 +21,24 @@ async def run_reviewus():
     await reviewus_rate.main()
     return {"status": "Review Us Task Completed"}
 
-@app.post("/run-all")
-async def run_all():
+@app.get("/testpublicformulrs")
+async def testpublicformulrs():
     print("Running All Tasks...")
     print("Running DLC Task...")
     dlc_history = await dlc.main()
     print("\nDLC Task Completed.\n")
-    print("------------------------")
-    print(f"Success: {dlc_history.is_successful()}")
-    print(f"Final Result: {dlc_history.final_result()}")
     print("------------------------\n")
-    await reviewus_rate.main()
-    return {"status": "All Tasks Completed"}
+    print("Running Review Us Task...")
+    reviewusrate_history = await reviewus_rate.main()
+    print("\nReview Us Task Completed.\n")
+    print("------------------------\n")
+    print("All Tasks Completed.\n")
+    return {
+        "DLC Page Success": dlc_history.is_successful(), 
+        "DLC Page Final Result": dlc_history.final_result(),
+        "Review Us Page Success": reviewusrate_history.is_successful(),
+        "Review Us Page Final Result": reviewusrate_history.final_result()
+    }
 
 # if __name__ == "__main__":
 #     asyncio.run(run_all())

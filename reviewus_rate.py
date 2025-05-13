@@ -77,8 +77,6 @@ async def main():
         )
     )
     history = await agent.run()
-    result = history.final_result()
-    print('------------------------')
-    print(result)
+    return history
 
 #asyncio.run(main())

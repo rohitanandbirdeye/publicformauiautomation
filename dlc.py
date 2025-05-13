@@ -5,20 +5,21 @@ import asyncio
 from dotenv import load_dotenv
 load_dotenv()
 
+# 4. The following errors should be visible:
+#         - **Registration Id Number**: Enter a valid.
+#         - **Registration Id Type**: Enter a valid.
+#         - **Address line 1**: Enter a valid.
+#         - **Legal Business Name**: Enter a valid.
+
 task = """
    ### Navigate to DLC register page and fill the form
 
     Here are the specific steps:
-    1. go to url https://publicforms-test.birdeye.com/dlc/register/MTcxODc5NDQ4MjY0MjA0
+    1. go to url https://birdeye.com/dlc/register/MTcxODc5NDQ4MjY0MjA0
     2. click on the **submit** button
     3. Validation errors should be visible on page.
-    4. The following errors should be visible:
-        - **Registration Id Number**: Enter a valid.
-        - **Registration Id Type**: Enter a valid.
-        - **Address line 1**: Enter a valid.
-        - **Legal Business Name**: Enter a valid.
-    5. If errors are not visible on page, then the form is not working as expected. Throw error and exit.
-    6. Form should not be submitted.
+    4. If errors are not visible on page, then the form is not working as expected. Throw error and exit.
+    5. Form should not be submitted.
 
     Important:
       - Wait for each element to load before interacting
@@ -39,11 +40,6 @@ async def main():
         )
     )
     history = await agent.run()
-    print('------------------------')
-    print(history.is_successful())
-    print('------------------------')
-    print(history.final_result())
-    print('------------------------')
     return history
 
 #asyncio.run(main())
