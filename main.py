@@ -1,12 +1,14 @@
 import asyncio
-import dlc
-import reviewus_rate
 from fastapi import FastAPI
 import os
 import glob
 import json
 import time
 from fastapi.middleware.cors import CORSMiddleware
+
+import dlc
+import reviewus_rate
+import checkin
 
 app = FastAPI()
 
@@ -40,6 +42,12 @@ async def run_reviewus():
     await reviewus_rate.main()
     return {"status": "Review Us Task Completed"}
 
+@app.post("/run-checkin")
+async def run_checkin():
+    print("Running Checkin Task...")
+    await checkin.main()
+    return {"status": "Checkin Task Completed"}
+
 @app.get("/getAutomationResult")
 def getAutomationResult():
     directory = "outputs"
@@ -65,6 +73,10 @@ async def testpublicformulrs():
     reviewusrate_history = await reviewus_rate.main()
     print("\nReview Us Task Completed.\n")
     print("------------------------\n")
+    print("Running Checkin Task...")
+    checkin_history = await checkin.main()
+    print("\nCheckin Task Completed.\n")
+    print("------------------------\n")
     print("All Tasks Completed.\n")
 
     end_timestamp = time.time()
@@ -80,23 +92,13 @@ async def testpublicformulrs():
                 "success": reviewusrate_history.is_successful(),
                 "message": reviewusrate_history.final_result()
             },
+            "Checkin": {
+                "success": checkin_history.is_successful(),
+                "message": checkin_history.final_result()
+            }
         }
     }
 
-    # final_result = {
-    #     "start":start_timestamp,
-    #     "end": end_timestamp,
-    #     "pages": {
-    #         "DLC Page": {
-    #             "success": True,
-    #             "message": "DLC Page is working as expected/....",
-    #         }, 
-    #         "Review us Page": {
-    #             "success": True,
-    #             "message": "Review Us Page is working as expected/...",
-    #         },
-    #     }
-    # }
     final_result_obj = json.dumps(final_result, indent=4)
     
     print(f"Timestamp: {end_timestamp}")

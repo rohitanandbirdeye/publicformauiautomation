@@ -45,6 +45,7 @@ async def main():
             gemini_api_key=os.getenv("GOOGLE_API_KEY")
         )
     )
-    await agent.run()
+    history = await agent.run()
+    return history
 
-asyncio.run(main())
+#asyncio.run(main())
