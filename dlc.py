@@ -13,23 +13,11 @@ task = """
     2. click on the **submit** button
     3. Validation errors should be visible on page.
     4. The following errors should be visible:
-        - **First Name**: This field is required.
-        - **Last Name**: This field is required.
-        - **Email**: This field is required.
-        - **Phone Number**: This field is required.
-        - **Business Name**: This field is required.
-        - **Business Address**: This field is required.
-        - **City**: This field is required.
-        - **State**: This field is required.
-        - **Zip Code**: This field is required.
-        - **Business Type**: This field is required.
-        - **Business Website**: This field is required.
-        - **Business Phone Number**: This field is required.
-        - **Business Email**: This field is required.
-        - **Business Description**: This field is required.
-        - **Business Owner First Name**: This field is required.
-        - **Business Owner Last Name**: This field is required.
-    5. If no errors are visible, then the form is not working as expected.
+        - **Registration Id Number**: This field is required.
+        - **Registration Id Type**: This field is required.
+        - **Address line 1**: This field is required.
+        - **Legal Business Name**: This field is required.
+    5. If errors are not visible on page, then the form is not working as expected. Throw error and exit.
     6. Form should not be submitted.
 
     Important:
@@ -42,6 +30,7 @@ task = """
 async def main():
     agent = Agent(
         task=task,
+        enable_memory=False,
         llm = ChatOpenAI(
             model="gpt-4o",
             temperature=0.0,
@@ -49,6 +38,11 @@ async def main():
             timeout=30,
         )
     )
-    await agent.run()
+    history = await agent.run()
+    print('------------------------')
+    print(history.is_successful())
+    print('------------------------')
+    print(history.final_result())
+    print('------------------------')
 
 asyncio.run(main())
