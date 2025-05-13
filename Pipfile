@@ -11,6 +11,7 @@ langchain = "*"
 python-dotenv = "*"
 langchain-ollama = "*"
 playwright = "*"
+langchain-openai = "*"
 
 [dev-packages]
 

@@ -40,9 +40,9 @@ Visit [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-1654067
 - Open [birdeye review us](https://birdeye.com/dumpling-baby-china-bistro-165406729056862/review-us?dashboard=1).
 
 ### Step 4: Click on "Review us on Google" Button
-- If the browser gets redirected
-
-
+- If the url gets redirected to Google, it's successful.
+- Close the browser.
+---
 
 **Important:** Ensure efficiency and accuracy throughout the process."""
 
