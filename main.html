@@ -34,6 +34,7 @@
       $.ajax({
         url: "http://127.0.0.1:8000/testpublicformulrs",
         method: "GET",
+        timeout: 50000,
         success: function (response) {
           // Populate the table with the response data
           const tableBody = $("#results-table");
