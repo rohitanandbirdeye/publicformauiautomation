@@ -4,6 +4,7 @@ import os
 import glob
 import json
 import time
+import re
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -59,8 +60,16 @@ def getAutomationResult():
     if not files:
         return {"error": "No result files found"}
     
+    # Helper to extract timestamp from filename
+    def extract_timestamp(file_path):
+        match = re.search(r'result_(\d+\.\d+)\.json$', file_path)
+        return float(match.group(1)) if match else 0
+
+    # Sort files by extracted timestamp, descending (latest first)
+    files = sorted(files, key=extract_timestamp, reverse=True)
+    
     results = []
-    for file_path in sorted(files, key=os.path.getctime, reverse=True):
+    for file_path in files:
         with open(file_path, "r") as file:
             try:
                 data = json.load(file)
