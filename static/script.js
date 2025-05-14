@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultsHeader = document.getElementById('automationresults');
 
   async function fetchAutomationResults() {
-    tableBody.innerHTML = `<tr><td colspan="4" class="loading">Loading...</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="3" class="loading">Loading...</td></tr>`;
     try {
       const response = await fetch('http://127.0.0.1:8000/getAutomationResult');
       if (!response.ok) throw new Error('Network response was not ok');
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add a header row for each run
         const runHeaderRow = document.createElement('tr');
         runHeaderRow.innerHTML = `
-          <td colspan="4" class="table-secondary fw-bold">
+          <td colspan="3" class="table-secondary fw-bold">
             Run #${data.results.length - idx} &mdash; ${new Date(start * 1000).toLocaleString()} - ${new Date(end * 1000).toLocaleString()}
           </td>
         `;
@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${page}</td>
             <td>${details.success ? "✅" : "❌"}</td>
             <td>${details.message}</td>
-            <td>${new Date(start * 1000).toLocaleTimeString()}</td>
           `;
           tableBody.appendChild(row);
           rowCount++;
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       tableBody.innerHTML = `
         <tr>
-          <td colspan="4" class="text-danger text-center">Failed to fetch data from the server.</td>
+          <td colspan="3" class="text-danger text-center">Failed to fetch data from the server.</td>
         </tr>
       `;
       resultsHeader.textContent = "Automation Results (Error)";
