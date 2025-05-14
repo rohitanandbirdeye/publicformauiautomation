@@ -1,8 +1,6 @@
-import os
-from langchain_google_genai import ChatGoogleGenerativeAI
 from browser_use import Agent
-import asyncio
 from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
 load_dotenv()
 
 task = """
@@ -36,13 +34,11 @@ task = """
 async def main():
     agent = Agent(
         task=task,
-        llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
-            temperature=0,
-            max_tokens=None,
-            timeout=None,
+        llm = ChatOpenAI(
+            model="gpt-4o",
+            temperature=0.0,
             max_retries=2,
-            gemini_api_key=os.getenv("GOOGLE_API_KEY")
+            timeout=30,
         )
     )
     history = await agent.run()

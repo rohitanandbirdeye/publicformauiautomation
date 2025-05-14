@@ -74,28 +74,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultsHeader = document.getElementById('automationresults');
 
   async function fetchAutomationResults() {
-    tableBody.innerHTML = `<tr><td colspan="3" class="loading">Loading...</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="4" class="loading">Loading...</td></tr>`;
     try {
       const response = await fetch('http://127.0.0.1:8000/getAutomationResult');
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
-      if (!data.final_result) throw new Error('No results found');
-      const { start, end, pages } = data.final_result;
-      resultsHeader.textContent = `Public forms automation result: ${new Date(start * 1000).toLocaleTimeString()} - ${new Date(end * 1000).toLocaleTimeString()}`;
+      if (!data.results || !Array.isArray(data.results) || data.results.length === 0) {
+        throw new Error('No results found');
+      }
       tableBody.innerHTML = '';
-      Object.entries(pages).forEach(([page, details]) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${page}</td>
-          <td>${details.success ? "✅" : "❌"}</td>
-          <td>${details.message}</td>
+      let rowCount = 0;
+      data.results.forEach((run, idx) => {
+        const { start, end, pages } = run;
+        // Add a header row for each run
+        const runHeaderRow = document.createElement('tr');
+        runHeaderRow.innerHTML = `
+          <td colspan="4" class="table-secondary fw-bold">
+            Run #${data.results.length - idx} &mdash; ${new Date(start * 1000).toLocaleString()} - ${new Date(end * 1000).toLocaleString()}
+          </td>
         `;
-        tableBody.appendChild(row);
+        tableBody.appendChild(runHeaderRow);
+        Object.entries(pages).forEach(([page, details]) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${page}</td>
+            <td>${details.success ? "✅" : "❌"}</td>
+            <td>${details.message}</td>
+            <td>${new Date(start * 1000).toLocaleTimeString()}</td>
+          `;
+          tableBody.appendChild(row);
+          rowCount++;
+        });
       });
+      resultsHeader.textContent = `Public forms automation results (${rowCount} entries)`;
     } catch (error) {
       tableBody.innerHTML = `
         <tr>
-          <td colspan="3" class="text-danger text-center">Failed to fetch data from the server.</td>
+          <td colspan="4" class="text-danger text-center">Failed to fetch data from the server.</td>
         </tr>
       `;
       resultsHeader.textContent = "Automation Results (Error)";

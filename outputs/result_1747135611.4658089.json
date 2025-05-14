@@ -2,11 +2,11 @@
     "start": 1747135611.465808,
     "end": 1747135611.4658089,
     "pages": {
-        "DLC Page": {
+        "DLC": {
             "success": false,
             "message": "Successfully navigated to the DLC register page, clicked the submit button, and observed validation errors as not expected. The form was not submitted, and no error mesage, confirming the task's failure. "
         },
-        "Review us Page": {
+        "Review us": {
             "success": true,
             "message": "The form was successfully submitted, and a confirmation message was displayed. Task completed successfully"
         }

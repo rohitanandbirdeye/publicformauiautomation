@@ -59,11 +59,16 @@ def getAutomationResult():
     if not files:
         return {"error": "No result files found"}
     
-    latest_file = max(files, key=os.path.getctime)
-    with open(latest_file, "r") as file:
-        data = json.load(file)
-
-    return {"final_result": data}
+    results = []
+    for file_path in sorted(files, key=os.path.getctime, reverse=False):
+        with open(file_path, "r") as file:
+            try:
+                data = json.load(file)
+                results.append(data)
+            except Exception as e:
+                results.append({"error": str(e)})
+    
+    return {"results": results}
 
 @app.get("/testpublicformulrs")
 async def testpublicformulrs():
