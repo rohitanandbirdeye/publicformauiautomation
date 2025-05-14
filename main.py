@@ -5,12 +5,16 @@ import glob
 import json
 import time
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
-import dlc
-import reviewus_rate
-import checkin
+from publicFormScripts import checkin, dlc, reviewus_rate
 
 app = FastAPI()
+
+# Serve static files (main.html, script.js, etc.)
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 origins = [
     "http://localhost",
@@ -26,9 +30,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the Automation API"}
+@app.get("/", include_in_schema=False)
+def root():
+    return FileResponse(os.path.join(static_dir, "main.html"))
 
 @app.post("/run-dlc")
 async def run_dlc():

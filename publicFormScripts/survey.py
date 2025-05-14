@@ -5,13 +5,29 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from browser_use import (
     Agent,
     Browser,
+    BrowserConfig,
     Controller,
     ActionResult
 )
-
 import asyncio
 from dotenv import load_dotenv
 load_dotenv()
+
+browser = Browser(
+    config=BrowserConfig(
+      # headless=False,
+      # browser_binary_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',  # Update this path based on your OS
+      # extra_browser_args=[
+      #     '--user-data-dir=/Users/adarsh.tiwari/Library/Application Support/Google/Chrome',  # Update this path based on your OS
+      #     '--profile-directory=Default'
+      # ])
+      connect_over_cdp=True,
+      cdp_url="http://localhost:9242",
+      reuse_existing=True,
+    )
+)
+
+
 controller = Controller()
 
 # use this controller in your agent config to select star ratings for survey. make this dynamic with a rating parameter
@@ -193,6 +209,7 @@ async def runAutomation(prompt):
     agent = Agent(
         task=prompt,
         controller=controller,
+        browser=browser,
         llm=ChatOpenAI(model="gpt-4o")
     )
     await agent.run()
