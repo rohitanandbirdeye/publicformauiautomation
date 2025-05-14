@@ -1,7 +1,7 @@
 install packages:
-pyenv install - for virtual env
 or
-pip install - for global env
+pipenv shell
+pipenv install
 
 Start the FastAPI server using Uvicorn:
 uvicorn main:app --reload
