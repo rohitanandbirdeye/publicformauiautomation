@@ -53,11 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
     runLoading.classList.remove('d-none');
     runStatus.innerHTML = '';
     let endpoint = '';
+    let method = 'POST';
     if (value === 'dlc') endpoint = '/run-dlc';
     else if (value === 'reviewus') endpoint = '/run-reviewus';
     else if (value === 'checkin') endpoint = '/run-checkin';
+    else if (value === 'all') {
+      endpoint = '/testpublicformulrs'
+      method = 'GET'
+    };
     try {
-      const response = await fetch(`http://127.0.0.1:8000${endpoint}`, { method: 'POST' });
+      const response = await fetch(`http://127.0.0.1:8000${endpoint}`, { method });
       const data = await response.json();
       runStatus.innerHTML = `<div class="alert alert-success">${data.status || 'Task completed.'}</div>`;
     } catch (error) {
@@ -105,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
           rowCount++;
         });
       });
-      resultsHeader.textContent = `Public forms automation results (${rowCount} entries)`;
+      resultsHeader.textContent = `Public Form UI Automation Results`;
     } catch (error) {
       tableBody.innerHTML = `
         <tr>
