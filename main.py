@@ -60,7 +60,7 @@ def getAutomationResult():
         return {"error": "No result files found"}
     
     results = []
-    for file_path in sorted(files, key=os.path.getctime, reverse=False):
+    for file_path in sorted(files, key=os.path.getctime, reverse=True):
         with open(file_path, "r") as file:
             try:
                 data = json.load(file)
