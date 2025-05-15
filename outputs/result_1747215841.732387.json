@@ -1,0 +1,18 @@
+{
+    "start": 1747215670.856431,
+    "end": 1747215841.732387,
+    "pages": {
+        "DLC": {
+            "success": true,
+            "message": "Validation errors appeared after clicking the submit button, confirming the form is functioning correctly. Task completed successfully."
+        },
+        "Review us rating": {
+            "success": true,
+            "message": "The review form was successfully submitted on the Birdeye website, and a confirmation message was displayed. Task completed successfully."
+        },
+        "Checkin": {
+            "success": true,
+            "message": "Form submitted successfully with Name: 'AI testing' and Email: 'aitest@test.com'. Success message received: 'Thank you,!'"
+        }
+    }
+}

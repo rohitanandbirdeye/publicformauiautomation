@@ -1,0 +1,18 @@
+{
+    "start": 1747288692.053638,
+    "end": 1747288887.91099,
+    "pages": {
+        "DLC": {
+            "success": true,
+            "message": "Validation errors are visible on the page after clicking the submit button, indicating the form is working as expected. Task completed successfully."
+        },
+        "Review us rating": {
+            "success": true,
+            "message": "The form was successfully submitted, and a confirmation message was displayed. Task completed successfully."
+        },
+        "Checkin": {
+            "success": true,
+            "message": "Form submitted successfully with the name 'AI testing' and email 'aitest@test.com'. Success message received: 'Thank you,!'."
+        }
+    }
+}
