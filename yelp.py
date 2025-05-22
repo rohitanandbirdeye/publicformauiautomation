@@ -65,7 +65,6 @@ async def main():
             max_tokens=None,
             timeout=None,
             max_retries=2,
-            #gemini_api_key="AIzaSyARVVhiSaqqGxS0nOowHjiub2MX0DprSFw"
         )
     )
     history = await agent.run()
